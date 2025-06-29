@@ -7,7 +7,7 @@ function Login({ setToken }) {
 
   const login = async () => {
     try {
-      const res = await axios.post('http://localhost:8000/api/token/', { username, password });
+const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/token/`, { username, password });
       localStorage.setItem("access", res.data.access);
       localStorage.setItem("refresh", res.data.refresh);
       setToken(res.data.access);
