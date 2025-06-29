@@ -26,11 +26,20 @@ function CreateTask() {
     .catch(err => console.error("Error loading projects", err));
   }, []);
 
-  const create = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/api/tasks/`, form, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("access")}` }
-    }).then(() => alert("Task created!"));
-  }
+const create = () => {
+  console.log("Submitting form:", form); // ✅ Log the payload
+  axios.post("https://smart-taks-backend.onrender.com/api/tasks/", form, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access")}`
+    }
+  })
+  .then(() => alert("Task created!"))
+  .catch(err => {
+    console.error("Create task error:", err.response?.data || err.message);
+    alert("Failed to create task");
+  });
+}
+
 
   return (
     <div>
