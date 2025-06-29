@@ -1,79 +1,100 @@
-📘 Smart Task Tracker – UI
-This is the React frontend for the Smart Task Tracker project – a task management system with JWT authentication, project-based task tracking, and role-based access.
+# 📘 Smart Task Tracker – UI
 
-🎯 Designed to test the backend APIs using a minimal but functional interface.
+This is the **React frontend** for the Smart Task Tracker – a full-stack task management system featuring JWT-based authentication, project-task nesting, and activity logs.
 
-🖥️ Features
-🔐 JWT Login (SimpleJWT)
+> 🎯 This UI is designed to test backend APIs in a minimal and functional interface.
 
-📋 View Projects (admin & contributor)
+---
 
-🛠️ Create Tasks (admin only)
+## 🖥️ Features
 
-✅ View & Update Assigned Tasks (contributor)
+- 🔐 JWT Login using SimpleJWT
+- 📋 View all Projects (admin & contributor)
+- 🛠️ Admin can Create Tasks and assign users
+- ✅ Contributors can view and update their own tasks
+- 📜 Admins can view Activity Logs for task changes
+- ⚙️ Fully integrated with Django REST Framework backend
 
-📜 View Activity Log (admin only)
+---
 
-🔄 Fully integrated with Django REST Framework API
+## 🚀 Getting Started
 
-🚀 Getting Started
-1. Clone the repo
-bash
-Copy
-Edit
-git clone https://github.com/your-username/smart-task-ui.git
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/smart-task-ui.git
 cd smart-task-ui
-2. Install dependencies
-bash
-Copy
-Edit
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
-3. Configure Backend API URL (Optional)
-Create a .env file if you plan to deploy:
+```
 
-env
-Copy
-Edit
-REACT_APP_API_URL=https://your-django-api.onrender.com
-Then update API calls like:
+### 3. (Optional) Set backend URL using `.env`
 
-js
-Copy
-Edit
+```env
+REACT_APP_API_URL=http://localhost:8000
+```
+
+Update your axios calls like this:
+```js
 axios.get(`${process.env.REACT_APP_API_URL}/api/projects/`)
-4. Run the app
-bash
-Copy
-Edit
+```
+
+### 4. Run the app
+
+```bash
 npm start
-App runs at http://localhost:3000
+```
 
-📂 Folder Structure
-pgsql
-Copy
-Edit
+Visit: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📁 Folder Structure
+
+```
 src/
-├── App.jsx
-├── Login.jsx
-├── ProjectList.jsx
-├── CreateTask.jsx
-├── MyTasks.jsx
-├── ActivityLog.jsx
-├── index.js
-🔗 Backend API Repo
-Make sure your backend is up and running:
-👉 Smart Task Tracker – Django API
+├── App.jsx              # Routes and Navigation
+├── Login.jsx            # JWT login
+├── ProjectList.jsx      # View all projects
+├── CreateTask.jsx       # Admin: Create and assign tasks
+├── MyTasks.jsx          # Contributor: View/update assigned tasks
+├── ActivityLog.jsx      # Admin: View activity log
+├── index.js             # React DOM root
+```
 
-✅ Admin Credentials
-To test the full UI, login with:
+---
 
-txt
-Copy
-Edit
-username: amritansh
-password: *********
-(Replace with your actual superuser credentials)
+## 🔗 Backend API
 
-📜 License
-This project is for educational use and internship submission only.
+Make sure the Django backend is running at:
+```
+http://localhost:8000
+```
+Or deploy it to:
+```
+https://your-backend.onrender.com
+```
 
+---
+
+## 🔐 Demo Credentials
+
+```txt
+👑 Admin Login:
+Username: amritansh
+Password: ********
+
+👤 Contributor Login:
+Username: contributor
+Password: ********
+```
+
+---
+
+## 📜 License
+
+This project was built as part of a full-stack internship assignment and is intended for educational/demo purposes.
