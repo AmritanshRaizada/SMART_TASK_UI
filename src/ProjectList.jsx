@@ -25,4 +25,3 @@ function ProjectList() {
 }
 
 export default ProjectList;
-s
