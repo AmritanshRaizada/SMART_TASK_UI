@@ -5,7 +5,7 @@ function ProjectList() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/projects/', {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/projects/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`
       }
@@ -25,3 +25,4 @@ function ProjectList() {
 }
 
 export default ProjectList;
+s

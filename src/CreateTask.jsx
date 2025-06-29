@@ -8,19 +8,26 @@ function CreateTask() {
     title: "", description: "", status: "TODO", due_date: "", assigned_to: "", project: ""
   });
 
-useEffect(() => {
-  axios.get("http://localhost:8000/api/users/", {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("access")}`
-    }
-  })
-  .then(res => setUsers(res.data))
-  .catch(err => console.error("Error loading users", err));
-}, []);
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access")}`
+      }
+    })
+    .then(res => setUsers(res.data))
+    .catch(err => console.error("Error loading users", err));
 
+    axios.get(`${process.env.REACT_APP_API_URL}/api/projects/`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access")}`
+      }
+    })
+    .then(res => setProjects(res.data))
+    .catch(err => console.error("Error loading projects", err));
+  }, []);
 
   const create = () => {
-    axios.post("http://localhost:8000/api/tasks/", form, {
+    axios.post(`${process.env.REACT_APP_API_URL}/api/tasks/`, form, {
       headers: { Authorization: `Bearer ${localStorage.getItem("access")}` }
     }).then(() => alert("Task created!"));
   }

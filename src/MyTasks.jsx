@@ -5,7 +5,7 @@ function MyTasks() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/tasks/", {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/tasks/`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("access")}` }
     }).then(res => {
       const myTasks = res.data.filter(t => t.assigned_to == localStorage.getItem("user_id"));
@@ -14,7 +14,7 @@ function MyTasks() {
   }, []);
 
   const updateStatus = (taskId, newStatus) => {
-    axios.patch(`http://localhost:8000/api/tasks/${taskId}/`, { status: newStatus }, {
+    axios.patch(`${process.env.REACT_APP_API_URL}/api/tasks/${taskId}/`, { status: newStatus }, {
       headers: { Authorization: `Bearer ${localStorage.getItem("access")}` }
     }).then(() => window.location.reload());
   };

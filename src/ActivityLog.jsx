@@ -5,7 +5,7 @@ function ActivityLog() {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/logs/", {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/logs/`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("access")}` }
     }).then(res => setLogs(res.data));
   }, []);
